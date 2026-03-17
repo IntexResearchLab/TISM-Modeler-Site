@@ -1,6 +1,15 @@
 import './App.css'
+import logo from './assets/logo_light.png'
 
 export default function App() {
+  const appName = 'T|ISM Modeler'
+  const releaseVersion = 'v1.0.0'
+
+const authors = [
+  'Ibrahim Yahaya Wuni',
+  'Bridget Tawiah Badu Eshun',
+]
+
   const coreFeatures = [
     {
       title: "End-to-end TISM workflow",
@@ -61,7 +70,7 @@ export default function App() {
     { label: "Modeling modes", value: "ISM + TISM" },
     { label: "Output pipeline", value: "Variables → Report" },
     { label: "Export formats", value: "PNG · CSV · Excel · PDF" },
-    { label: "Release", value: "v0.1.0" },
+    { label: "Release", value: releaseVersion },
   ];
 
   const releaseNotes = [
@@ -72,7 +81,7 @@ export default function App() {
 
   const faqs = [
     {
-      q: "Who is TISM-Modeler for?",
+      q: `Who is ${appName} for?`,
       a: "It is designed for researchers, graduate students, analysts, and instructors working with interpretive structural modeling methods.",
     },
     {
@@ -96,16 +105,20 @@ export default function App() {
       <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
           <a href="#top" className="flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 via-orange-500 to-blue-600 text-sm font-black text-white shadow-lg shadow-blue-500/20">
-              TM
+            <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-slate-200">
+              <img
+                src={logo}
+                alt={`${appName} logo`}
+                className="h-10 w-10 object-contain"
+              />
             </div>
             <div>
               <div className="text-sm font-semibold tracking-tight text-slate-950">
-                TISM-Modeler
+                {appName}
               </div>
-              <div className="text-xs text-slate-500">
-                Research tool for ISM &amp; TISM modeling
-              </div>
+<div className="text-xs text-slate-500">
+  Research software for interpretive structural modeling (ISM/TISM)
+</div>
             </div>
           </a>
 
@@ -135,7 +148,7 @@ export default function App() {
               href="#download"
               className="rounded-xl bg-slate-950 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-slate-900/20 transition hover:bg-slate-800"
             >
-              Download v0.1.0
+              Download {releaseVersion}
             </a>
           </div>
         </div>
@@ -146,7 +159,25 @@ export default function App() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600 shadow-sm">
               <span className="h-2 w-2 rounded-full bg-emerald-500" />
-              Desktop release now available · Version 0.1.0
+              Desktop release now available · Version 1.0.0
+            </div>
+
+            <div className="mt-6 flex items-center gap-4">
+              <div className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-slate-200 sm:h-24 sm:w-24">
+                <img
+                  src={logo}
+                  alt={`${appName} logo`}
+                  className="h-16 w-16 object-contain sm:h-20 sm:w-20"
+                />
+              </div>
+              <div>
+                <div className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
+                  Research software
+                </div>
+                <div className="mt-1 text-2xl font-black tracking-tight text-slate-950 sm:text-3xl">
+                  {appName}
+                </div>
+              </div>
             </div>
 
             <h1 className="mt-6 text-4xl font-black tracking-[-0.04em] text-slate-950 sm:text-5xl lg:text-7xl">
@@ -157,7 +188,7 @@ export default function App() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
-              TISM-Modeler helps researchers define variables, generate ISM/TISM
+              {appName} helps researchers define variables, generate ISM/TISM
               artifacts, build interpretable hierarchies, and export polished outputs
               from a single desktop workspace.
             </p>
@@ -198,16 +229,25 @@ export default function App() {
             <div className="rounded-[32px] border border-slate-200 bg-white p-4 shadow-2xl shadow-slate-300/30">
               <div className="overflow-hidden rounded-[26px] bg-[#0f1724] text-white">
                 <div className="flex items-center justify-between border-b border-slate-700 px-5 py-4">
-                  <div>
-                    <div className="text-base font-semibold tracking-tight">
-                      TISM-Modeler Workspace
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl bg-white ring-1 ring-white/20">
+                      <img
+                        src={logo}
+                        alt={`${appName} logo`}
+                        className="h-8 w-8 object-contain"
+                      />
                     </div>
-                    <div className="text-xs text-slate-400">
-                      Research-oriented desktop interface preview
+                    <div>
+                      <div className="text-base font-semibold tracking-tight">
+                        {appName} Workspace
+                      </div>
+                      <div className="text-xs text-slate-400">
+                        Research-oriented desktop interface preview
+                      </div>
                     </div>
                   </div>
                   <div className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-1.5 text-xs font-medium text-slate-200">
-                    v0.1.0
+                    {releaseVersion}
                   </div>
                 </div>
 
@@ -315,14 +355,19 @@ export default function App() {
               </div>
             </div>
 
-            <div className="absolute -bottom-6 -left-4 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-lg">
-              <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
-                Developed by
-              </div>
-              <div className="mt-1 text-sm font-semibold text-slate-950">
-                Intex Research Lab
-              </div>
-            </div>
+<div className="absolute -bottom-6 -left-4 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-lg">
+  
+  <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
+    Developed by
+  </div>
+
+  <div className="mt-1 text-sm font-semibold text-slate-950">
+    Intex Research Lab Development Unit
+  </div>
+      <div className="mt-1 text-[11px] text-slate-500">
+    © {new Date().getFullYear()} {authors.join(' and ')}
+  </div>
+</div>
           </div>
         </section>
 
@@ -334,7 +379,7 @@ export default function App() {
                 Replace fragmented spreadsheets and manual diagrams with a focused modeling environment.
               </h2>
               <p className="mt-4 text-sm leading-7 text-slate-300">
-                TISM-Modeler is built for method-intensive analytical work. It turns a
+                {appName} is built for method-intensive analytical work. It turns a
                 complex interpretive process into a reproducible, visual, and exportable
                 workflow without sacrificing methodological clarity.
               </p>
@@ -427,56 +472,56 @@ export default function App() {
               <div>
                 <div className="text-sm font-semibold text-orange-400">Download</div>
                 <h2 className="mt-2 text-3xl font-bold tracking-tight">
-                  Get TISM-Modeler v0.1.0 for your desktop.
+                  Get {appName} {releaseVersion} for your desktop.
                 </h2>
                 <p className="mt-4 max-w-2xl text-slate-300">
-                  Replace these placeholder buttons with your actual release links from GitHub Releases or your preferred hosting platform.
+                  Choose the appropriate installer for your operating system.
                 </p>
 
                 <div className="mt-6 grid gap-4 sm:grid-cols-3">
-{[
-  { 
-    title: "macOS (Coming)", 
-    hint: "Apple Silicon / Intel", 
-    link: "#",
-    style: "bg-orange-500 hover:bg-orange-400 text-white" 
-  },
-  { 
-    title: "Windows", 
-    hint: "Windows 10+", 
-    link: "https://github.com/IntexResearchLab/TISM-Modeler-Site/releases/download/v1.0.0/Tism-Modeler.0.0.0.msi",
-    style: "bg-blue-600 hover:bg-blue-500 text-white" 
-  },
-  { 
-    title: "Linux (Coming)", 
-    hint: "AppImage / Debian", 
-    link: "#",
-    style: "bg-white text-slate-950 hover:bg-slate-100" 
-  },
-].map((item) => (
-  <a
-    key={item.title}
-    href={item.link}
-    target="_blank"
-    rel="noopener noreferrer"
-    className={`rounded-2xl px-5 py-4 text-center shadow-lg transition ${item.style}`}
-  >
-    <div className="text-sm font-semibold">Download for {item.title}</div>
-    <div
-      className={`mt-1 text-xs ${
-        item.title.startsWith('Linux') ? 'text-slate-500' : 'text-white/75'
-      }`}
-    >
-      {item.hint}
-    </div>
-  </a>
-))}
+                  {[
+                    {
+                      title: "macOS",
+                      hint: "Apple Silicon",
+                      link: "https://github.com/IntexResearchLab/TISM-Modeler-Site/releases/download/v1.0.0/Tism-Modeler-0.0.0-arm64.dmg",
+                      style: "bg-orange-500 hover:bg-orange-400 text-white"
+                    },
+                    {
+                      title: "Windows",
+                      hint: "Windows 10+",
+                      link: "https://github.com/IntexResearchLab/TISM-Modeler-Site/releases/download/v1.0.0/Tism-Modeler.0.0.0.msi",
+                      style: "bg-blue-600 hover:bg-blue-500 text-white"
+                    },
+                    {
+                      title: "Linux (Coming)",
+                      hint: "AppImage / Debian",
+                      link: "#",
+                      style: "bg-white text-slate-950 hover:bg-slate-100"
+                    },
+                  ].map((item) => (
+                    <a
+                      key={item.title}
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`rounded-2xl px-5 py-4 text-center shadow-lg transition ${item.style}`}
+                    >
+                      <div className="text-sm font-semibold">Download for {item.title}</div>
+                      <div
+                        className={`mt-1 text-xs ${
+                          item.title.startsWith('Linux') ? 'text-slate-500' : 'text-white/75'
+                        }`}
+                      >
+                        {item.hint}
+                      </div>
+                    </a>
+                  ))}
                 </div>
               </div>
 
               <div className="rounded-[28px] border border-slate-800 bg-[#111827] p-6">
                 <div className="text-sm font-semibold text-white">Release notes</div>
-                <div className="mt-1 text-sm text-slate-400">TISM-Modeler v0.1.0</div>
+                <div className="mt-1 text-sm text-slate-400">{appName} {releaseVersion}</div>
 
                 <div className="mt-5 space-y-3">
                   {releaseNotes.map((item) => (
@@ -486,8 +531,12 @@ export default function App() {
                   ))}
                 </div>
 
+                                <div className="mt-4 rounded-2xl border border-slate-800 bg-slate-950 p-4 text-sm text-slate-300">
+                  Copyright © {new Date().getFullYear()} {authors.join(', ')}
+                </div>
+
                 <div className="mt-6 rounded-2xl border border-slate-800 bg-slate-950 p-4 text-sm text-slate-300">
-                  Developed by <span className="font-semibold text-white">Intex Research Lab</span>
+                  Developed by <span className="font-semibold text-white">Intex Research Lab Development Unit</span>
                 </div>
               </div>
             </div>
