@@ -5,17 +5,17 @@ export default function App() {
     {
       title: "End-to-end TISM workflow",
       description:
-        "Move from variable definition to SSIM, reachability matrices, level partitioning, MICMAC analysis, and final model generation in one guided desktop workflow.",
+        "Move from variable definition to SSIM, reachability analysis, level partitioning, MICMAC analysis, and final model generation in one guided desktop workflow.",
     },
     {
       title: "Built for research and teaching",
       description:
-        "Designed for researchers, supervisors, graduate students, and methodology-focused academic teams working with ISM and TISM.",
+        "Designed for researchers, supervisors, graduate students, and academic teams working with ISM and TISM methodologies.",
     },
     {
       title: "Interpretive modeling support",
       description:
-        "Capture structural relationships together with interpretations, so the final model is not only computable, but explainable.",
+        "Capture structural relationships together with interpretations, so the final model is not only computable but also explainable.",
     },
     {
       title: "Publication-ready exports",
@@ -28,32 +28,32 @@ export default function App() {
     {
       step: "01",
       title: "Define variables",
-      text: "Create the factor set, labels, and research variables that will drive the model.",
+      text: "Create the set of variables, labels, and research constructs that will shape the model.",
     },
     {
       step: "02",
       title: "Construct SSIM",
-      text: "Encode contextual pairwise relationships using V, A, X, and O with interpretive meaning.",
+      text: "Capture pairwise contextual relationships using V, A, X, and O, with optional interpretive explanations.",
     },
     {
       step: "03",
       title: "Generate reachability matrices",
-      text: "Transform structural relations into initial and final reachability forms for formal analysis.",
+      text: "Convert structural relationships into initial and final reachability matrices for further analysis.",
     },
     {
       step: "04",
       title: "Partition levels",
-      text: "Identify hierarchy layers and reveal how factors propagate through the system.",
+      text: "Identify hierarchy levels and reveal how variables propagate through the system.",
     },
     {
       step: "05",
       title: "Build the final model",
-      text: "Visualize the directed structure as a clear multi-level ISM or TISM graph.",
+      text: "Visualize the directed structure as a clear multi-level ISM or TISM model.",
     },
     {
       step: "06",
       title: "Run MICMAC analysis",
-      text: "Study driving and dependence power to classify variables and interpret system behavior.",
+      text: "Examine driving and dependence power to classify variables and interpret system behavior.",
     },
   ];
 
@@ -157,9 +157,9 @@ export default function App() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
-              TISM-Modeler helps researchers structure variables, compute modeling
+              TISM-Modeler helps researchers define variables, generate ISM/TISM
               artifacts, build interpretable hierarchies, and export polished outputs
-              from a single focused desktop environment.
+              from a single desktop workspace.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -334,9 +334,9 @@ export default function App() {
                 Replace fragmented spreadsheets and manual diagrams with a focused modeling environment.
               </h2>
               <p className="mt-4 text-sm leading-7 text-slate-300">
-                TISM-Modeler is built for method-heavy analytical work. It helps turn a
+                TISM-Modeler is built for method-intensive analytical work. It turns a
                 complex interpretive process into a reproducible, visual, and exportable
-                workflow without sacrificing academic clarity.
+                workflow without sacrificing methodological clarity.
               </p>
             </div>
 
@@ -396,7 +396,7 @@ export default function App() {
               <div>
                 <div className="text-sm font-semibold text-blue-600">Tooling focus</div>
                 <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-950">
-                  Made to feel like a serious research product.
+                  Designed as a focused research product.
                 </h2>
                 <p className="mt-4 text-slate-600">
                   The website mirrors the application’s visual language: rounded panels, slate surfaces, strong contrast, structured sections, and calm visual density suited to academic users.
@@ -430,26 +430,47 @@ export default function App() {
                   Get TISM-Modeler v0.1.0 for your desktop.
                 </h2>
                 <p className="mt-4 max-w-2xl text-slate-300">
-                  Replace these placeholder buttons with your real release URLs from GitHub Releases, Google Drive, or your preferred hosting setup.
+                  Replace these placeholder buttons with your actual release links from GitHub Releases or your preferred hosting platform.
                 </p>
 
                 <div className="mt-6 grid gap-4 sm:grid-cols-3">
-                  {[
-                    { title: "macOS(Coming)", hint: "Apple Silicon / Intel", style: "bg-orange-500 hover:bg-orange-400 text-white" },
-                    { title: "Windows", hint: "Windows 10+", style: "bg-blue-600 hover:bg-blue-500 text-white" },
-                    { title: "Linux(Coming)", hint: "AppImage / Debian", style: "bg-white text-slate-950 hover:bg-slate-100" },
-                  ].map((item) => (
-                    <a
-                      key={item.title}
-                      href="#"
-                      className={`rounded-2xl px-5 py-4 text-center shadow-lg transition ${item.style}`}
-                    >
-                      <div className="text-sm font-semibold">Download for {item.title}</div>
-                      <div className={`mt-1 text-xs ${item.title === 'Linux' ? 'text-slate-500' : 'text-white/75'}`}>
-                        {item.hint}
-                      </div>
-                    </a>
-                  ))}
+{[
+  { 
+    title: "macOS (Coming)", 
+    hint: "Apple Silicon / Intel", 
+    link: "#",
+    style: "bg-orange-500 hover:bg-orange-400 text-white" 
+  },
+  { 
+    title: "Windows", 
+    hint: "Windows 10+", 
+    link: "https://github.com/IntexResearchLab/TISM-Modeler-Site/releases/download/v1.0.0/Tism-Modeler.0.0.0.msi",
+    style: "bg-blue-600 hover:bg-blue-500 text-white" 
+  },
+  { 
+    title: "Linux (Coming)", 
+    hint: "AppImage / Debian", 
+    link: "#",
+    style: "bg-white text-slate-950 hover:bg-slate-100" 
+  },
+].map((item) => (
+  <a
+    key={item.title}
+    href={item.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    className={`rounded-2xl px-5 py-4 text-center shadow-lg transition ${item.style}`}
+  >
+    <div className="text-sm font-semibold">Download for {item.title}</div>
+    <div
+      className={`mt-1 text-xs ${
+        item.title.startsWith('Linux') ? 'text-slate-500' : 'text-white/75'
+      }`}
+    >
+      {item.hint}
+    </div>
+  </a>
+))}
                 </div>
               </div>
 
@@ -494,4 +515,3 @@ export default function App() {
     </div>
   );
 }
-
