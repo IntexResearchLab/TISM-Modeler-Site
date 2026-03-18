@@ -3,96 +3,117 @@ import logo from './assets/logo_light.png'
 
 export default function App() {
   const appName = 'T|ISM Modeler'
-  const releaseVersion = 'v1.0.0'
+  const releaseVersion = 'v1.1.0'
 
-const authors = [
-  'Ibrahim Yahaya Wuni',
-  'Bridget Tawiah Badu Eshun',
-]
+  const authors = [
+    'Ibrahim Yahaya Wuni',
+    'Bridget Tawiah Badu Eshun',
+  ]
+
+  const downloadOptions = [
+    {
+      title: 'macOS',
+      hint: 'Apple Silicon',
+      link: 'https://github.com/IntexResearchLab/TISM-Modeler-Site/releases/download/v1.1.0/Tism-Modeler-0.0.0-arm64.dmg',
+      style: 'bg-orange-500 hover:bg-orange-400 text-white',
+    },
+    {
+      title: 'Windows',
+      hint: 'Windows 10+',
+      link: 'https://github.com/IntexResearchLab/TISM-Modeler-Site/releases/download/v1.1.0/Tism-Modeler.0.0.0.msi',
+      style: 'bg-blue-600 hover:bg-blue-500 text-white',
+    },
+    {
+      title: 'Linux (Coming)',
+      hint: 'AppImage / Debian',
+      link: '#',
+      style: 'bg-white text-slate-950 hover:bg-slate-100',
+    },
+  ]
 
   const coreFeatures = [
     {
-      title: "End-to-end TISM workflow",
+      title: 'End-to-end TISM workflow',
       description:
-        "Move from variable definition to SSIM, reachability analysis, level partitioning, MICMAC analysis, and final model generation in one guided desktop workflow.",
+        'Move from variable definition to SSIM, reachability analysis, level partitioning, MICMAC analysis, and final model generation in one guided desktop workflow.',
     },
     {
-      title: "Built for research and teaching",
+      title: 'Built for research and teaching',
       description:
-        "Designed for researchers, supervisors, graduate students, and academic teams working with ISM and TISM methodologies.",
+        'Designed for researchers, supervisors, graduate students, and academic teams working with ISM and TISM methodologies.',
     },
     {
-      title: "Interpretive modeling support",
+      title: 'Interpretive modeling support',
       description:
-        "Capture structural relationships together with interpretations, so the final model is not only computable but also explainable.",
+        'Capture structural relationships together with interpretations, so the final model is not only computable but also explainable.',
     },
     {
-      title: "Publication-ready exports",
+      title: 'Publication-ready exports',
       description:
-        "Export matrices, charts, graphs, and reports for analysis, presentations, appendices, and academic documentation.",
+        'Export matrices, charts, graphs, and reports for analysis, presentations, appendices, and academic documentation.',
     },
-  ];
+  ]
 
   const workflow = [
     {
-      step: "01",
-      title: "Define variables",
-      text: "Create the set of variables, labels, and research constructs that will shape the model.",
+      step: '01',
+      title: 'Define variables',
+      text: 'Create the set of variables, labels, and research constructs that will shape the model.',
     },
     {
-      step: "02",
-      title: "Construct SSIM",
-      text: "Capture pairwise contextual relationships using V, A, X, and O, with optional interpretive explanations.",
+      step: '02',
+      title: 'Construct SSIM',
+      text: 'Capture pairwise contextual relationships using V, A, X, and O, with optional interpretive explanations.',
     },
     {
-      step: "03",
-      title: "Generate reachability matrices",
-      text: "Convert structural relationships into initial and final reachability matrices for further analysis.",
+      step: '03',
+      title: 'Generate reachability matrices',
+      text: 'Convert structural relationships into initial and final reachability matrices for further analysis.',
     },
     {
-      step: "04",
-      title: "Partition levels",
-      text: "Identify hierarchy levels and reveal how variables propagate through the system.",
+      step: '04',
+      title: 'Partition levels',
+      text: 'Identify hierarchy levels and reveal how variables propagate through the system.',
     },
     {
-      step: "05",
-      title: "Build the final model",
-      text: "Visualize the directed structure as a clear multi-level ISM or TISM model.",
+      step: '05',
+      title: 'Build the final model',
+      text: 'Visualize the directed structure as a clear multi-level ISM or TISM model.',
     },
     {
-      step: "06",
-      title: "Run MICMAC analysis",
-      text: "Examine driving and dependence power to classify variables and interpret system behavior.",
+      step: '06',
+      title: 'Run MICMAC analysis',
+      text: 'Examine driving and dependence power to classify variables and interpret system behavior.',
     },
-  ];
+  ]
 
   const metrics = [
-    { label: "Modeling modes", value: "ISM + TISM" },
-    { label: "Output pipeline", value: "Variables → Report" },
-    { label: "Export formats", value: "PNG · CSV · Excel · PDF" },
-    { label: "Release", value: releaseVersion },
-  ];
+    { label: 'Modeling modes', value: 'ISM + TISM' },
+    { label: 'Output pipeline', value: 'Variables → Report' },
+    { label: 'Export formats', value: 'PNG · CSV · Excel · PDF' },
+    { label: 'Release', value: releaseVersion },
+  ]
 
   const releaseNotes = [
-    "Structured desktop workflow for ISM and TISM studies",
-    "Support for SSIM, reachability, MICMAC, and level partitioning",
-    "Clean visual summaries for academic reporting and demonstration",
-  ];
+    'Structured desktop workflow for ISM and TISM studies',
+    'Support for SSIM, reachability, MICMAC, and level partitioning',
+    'Clean visual summaries for academic reporting and demonstration',
+  ]
 
   const faqs = [
     {
       q: `Who is ${appName} for?`,
-      a: "It is designed for researchers, graduate students, analysts, and instructors working with interpretive structural modeling methods.",
+      a: 'It is designed for researchers, graduate students, analysts, and instructors working with interpretive structural modeling methods.',
     },
     {
-      q: "Does it support both ISM and TISM?",
-      a: "Yes. The workflow supports standard structural modeling as well as interpretation-focused total interpretive structural modeling.",
+      q: 'Does it support both ISM and TISM?',
+      a: 'Yes. The workflow supports standard structural modeling as well as interpretation-focused total interpretive structural modeling.',
     },
     {
-      q: "Can I use it for academic reporting?",
-      a: "Yes. The product is designed to help users move from structured inputs to visual outputs and exportable artifacts suitable for reports and presentations.",
+      q: 'Can I use it for academic reporting?',
+      a: 'Yes. The product is designed to help users move from structured inputs to visual outputs and exportable artifacts suitable for reports and presentations.',
     },
-  ];
+  ]
 
   return (
     <div className="min-h-screen bg-[#f8fafc] text-slate-900 antialiased">
@@ -116,9 +137,9 @@ const authors = [
               <div className="text-sm font-semibold tracking-tight text-slate-950">
                 {appName}
               </div>
-<div className="text-xs text-slate-500">
-  Research software for interpretive structural modeling (ISM/TISM)
-</div>
+              <div className="text-xs text-slate-500">
+                Research software for interpretive structural modeling (ISM/TISM)
+              </div>
             </div>
           </a>
 
@@ -159,7 +180,7 @@ const authors = [
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600 shadow-sm">
               <span className="h-2 w-2 rounded-full bg-emerald-500" />
-              Desktop release now available · Version 1.0.0
+              Desktop release now available · Version 1.1.0
             </div>
 
             <div className="mt-6 flex items-center gap-4">
@@ -258,21 +279,21 @@ const authors = [
                     </div>
                     <div className="space-y-2 text-sm">
                       {[
-                        "Welcome",
-                        "Variable Definition",
-                        "SSIM",
-                        "Reachability Matrix",
-                        "Reachability Power",
-                        "Level Partitioning",
-                        "MICMAC",
-                        "Summary",
+                        'Welcome',
+                        'Variable Definition',
+                        'SSIM',
+                        'Reachability Matrix',
+                        'Reachability Power',
+                        'Level Partitioning',
+                        'MICMAC',
+                        'Summary',
                       ].map((item, index) => (
                         <div
                           key={item}
                           className={`rounded-xl px-3 py-2 transition ${
                             index === 5
-                              ? "bg-blue-600 text-white"
-                              : "text-slate-300 hover:bg-slate-800"
+                              ? 'bg-blue-600 text-white'
+                              : 'text-slate-300 hover:bg-slate-800'
                           }`}
                         >
                           {item}
@@ -355,19 +376,19 @@ const authors = [
               </div>
             </div>
 
-<div className="absolute -bottom-6 -left-4 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-lg">
-  
-  <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
-    Developed by
-  </div>
+            <div className="absolute -bottom-6 -left-4 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-lg">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
+                Developed by
+              </div>
 
-  <div className="mt-1 text-sm font-semibold text-slate-950">
-    Intex Research Lab Development Unit
-  </div>
-      <div className="mt-1 text-[11px] text-slate-500">
-    © {new Date().getFullYear()} {authors.join(' and ')}
-  </div>
-</div>
+              <div className="mt-1 text-sm font-semibold text-slate-950">
+                Intex Research Lab Development Unit
+              </div>
+
+              <div className="mt-1 text-[11px] text-slate-500">
+                © {new Date().getFullYear()} {authors.join(' and ')}
+              </div>
+            </div>
           </div>
         </section>
 
@@ -450,12 +471,12 @@ const authors = [
 
               <div className="grid gap-4 sm:grid-cols-2">
                 {[
-                  "Guided multi-step methodology",
-                  "Research-oriented interface language",
-                  "Lightweight desktop-first interaction model",
-                  "Clean export and reporting workflow",
-                  "Presentation-friendly visuals",
-                  "Consistent ISM/TISM analysis structure",
+                  'Guided multi-step methodology',
+                  'Research-oriented interface language',
+                  'Lightweight desktop-first interaction model',
+                  'Clean export and reporting workflow',
+                  'Presentation-friendly visuals',
+                  'Consistent ISM/TISM analysis structure',
                 ].map((item) => (
                   <div key={item} className="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-200">
                     <div className="text-sm font-semibold text-slate-900">{item}</div>
@@ -479,26 +500,7 @@ const authors = [
                 </p>
 
                 <div className="mt-6 grid gap-4 sm:grid-cols-3">
-                  {[
-                    {
-                      title: "macOS",
-                      hint: "Apple Silicon",
-                      link: "https://github.com/IntexResearchLab/TISM-Modeler-Site/releases/download/v1.0.0/Tism-Modeler-0.0.0-arm64.dmg",
-                      style: "bg-orange-500 hover:bg-orange-400 text-white"
-                    },
-                    {
-                      title: "Windows",
-                      hint: "Windows 10+",
-                      link: "https://github.com/IntexResearchLab/TISM-Modeler-Site/releases/download/v1.0.0/Tism-Modeler.0.0.0.msi",
-                      style: "bg-blue-600 hover:bg-blue-500 text-white"
-                    },
-                    {
-                      title: "Linux (Coming)",
-                      hint: "AppImage / Debian",
-                      link: "#",
-                      style: "bg-white text-slate-950 hover:bg-slate-100"
-                    },
-                  ].map((item) => (
+                  {downloadOptions.map((item) => (
                     <a
                       key={item.title}
                       href={item.link}
@@ -521,17 +523,22 @@ const authors = [
 
               <div className="rounded-[28px] border border-slate-800 bg-[#111827] p-6">
                 <div className="text-sm font-semibold text-white">Release notes</div>
-                <div className="mt-1 text-sm text-slate-400">{appName} {releaseVersion}</div>
+                <div className="mt-1 text-sm text-slate-400">
+                  {appName} {releaseVersion}
+                </div>
 
                 <div className="mt-5 space-y-3">
                   {releaseNotes.map((item) => (
-                    <div key={item} className="rounded-xl bg-slate-900 px-4 py-3 text-sm text-slate-300 ring-1 ring-slate-800">
+                    <div
+                      key={item}
+                      className="rounded-xl bg-slate-900 px-4 py-3 text-sm text-slate-300 ring-1 ring-slate-800"
+                    >
                       {item}
                     </div>
                   ))}
                 </div>
 
-                                <div className="mt-4 rounded-2xl border border-slate-800 bg-slate-950 p-4 text-sm text-slate-300">
+                <div className="mt-4 rounded-2xl border border-slate-800 bg-slate-950 p-4 text-sm text-slate-300">
                   Copyright © {new Date().getFullYear()} {authors.join(', ')}
                 </div>
 
@@ -562,5 +569,5 @@ const authors = [
         </section>
       </main>
     </div>
-  );
+  )
 }
