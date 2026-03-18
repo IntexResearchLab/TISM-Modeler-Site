@@ -6,8 +6,9 @@ export default function App() {
   const releaseVersion = 'v1.1.0'
 
   const authors = [
-    'Ibrahim Yahaya Wuni',
-    'Bridget Tawiah Badu Eshun',
+    'Dr Ibrahim Yahaya Wuni',
+    'Dr Bridget Eshun',
+    'Dr Abdulaziz Alotaibi',
   ]
 
   const downloadOptions = [
@@ -378,15 +379,19 @@ export default function App() {
 
             <div className="absolute -bottom-6 -left-4 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-lg">
               <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
-                Developed by
+                Authors
               </div>
 
               <div className="mt-1 text-sm font-semibold text-slate-950">
-                Intex Research Lab Development Unit
+                {authors.join(', ')}
               </div>
 
               <div className="mt-1 text-[11px] text-slate-500">
-                © {new Date().getFullYear()} {authors.join(' and ')}
+                © {new Date().getFullYear()} All rights reserved
+              </div>
+
+              <div className="mt-1 text-[10px] text-slate-400">
+                Developed by InteX Research Lab, Development Unit
               </div>
             </div>
           </div>
@@ -542,8 +547,14 @@ export default function App() {
                   Copyright © {new Date().getFullYear()} {authors.join(', ')}
                 </div>
 
-                <div className="mt-6 rounded-2xl border border-slate-800 bg-slate-950 p-4 text-sm text-slate-300">
-                  Developed by <span className="font-semibold text-white">Intex Research Lab Development Unit</span>
+                <div className="mt-6 rounded-2xl border border-slate-800 bg-slate-950 p-4">
+                  <div className="text-sm text-slate-300">
+                    <span className="font-semibold text-white">Authors:</span>{' '}
+                    {authors.join(', ')}
+                  </div>
+                  <div className="mt-2 text-[11px] text-slate-500">
+                    Developed by InteX Research Lab, Development Unit
+                  </div>
                 </div>
               </div>
             </div>
