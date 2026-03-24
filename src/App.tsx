@@ -14,7 +14,7 @@ type DownloadOption = {
 }
 
 export default function App() {
-  const appName = 'T|ISM Modeler'
+  const appName = 'T/ISM Modeler'
 
   const authors = [
     'Dr Ibrahim Yahaya Wuni',
@@ -24,8 +24,51 @@ export default function App() {
 
   const paperLink = 'https://doi.org/10.1080/15623599.2025.2583164'
 
+  const paperCitation =
+    'Wuni, I. Y., & Eshun, B. T. B. (2025). A state-of-the-art review of the application of interpretive structural modelling in construction management studies. International Journal of Construction Management, 1–21. https://doi.org/10.1080/15623599.2025.2583164'
+
   const toolCitation =
-    'Wuni, I. Y., Eshun, B., & Alotaibi, A. (2025). T|ISM Modeler [Computer software]. InteX Research Lab, Development Unit.'
+    'Wuni, I. Y., Eshun, B., & Alotaibi, A. (2026). T/ISM Modeler [Computer software].'
+
+  const paperBibtex = `@article{wuni2025ismreview,
+  author = {Wuni, Ibrahim Yahaya and Eshun, Bridget T. B.},
+  title = {A state-of-the-art review of the application of interpretive structural modelling in construction management studies},
+  journal = {International Journal of Construction Management},
+  year = {2025},
+  pages = {1--21},
+  doi = {10.1080/15623599.2025.2583164},
+  url = {https://doi.org/10.1080/15623599.2025.2583164}
+}`
+
+  const toolBibtex = `@software{tism_modeler_2025,
+  author = {Wuni, Ibrahim Yahaya and Eshun, Bridget and Alotaibi, Abdulaziz},
+  title = {T|ISM Modeler},
+  year = {2025},
+  type = {Computer software}
+}`
+
+  const copyToClipboard = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text)
+      alert('Copied to clipboard.')
+    } catch {
+      alert('Could not copy automatically.')
+    }
+  }
+
+  const downloadTextFile = (filename: string, content: string) => {
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+
+    const link = document.createElement('a')
+    link.href = url
+    link.download = filename
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+
+    URL.revokeObjectURL(url)
+  }
 
   const downloadOptions: DownloadOption[] = [
     {
@@ -335,21 +378,66 @@ export default function App() {
                   A state-of-the-art review of the application of interpretive structural
                   modelling in construction management studies.
                 </p>
-                <a
-                  href={paperLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 inline-flex text-sm font-semibold text-blue-600 transition hover:text-blue-500"
-                >
-                  Read the paper →
-                </a>
+
+                <div className="mt-4 rounded-2xl bg-slate-50 p-4 text-xs leading-6 text-slate-700 ring-1 ring-slate-200">
+                  {paperCitation}
+                </div>
+
+                <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+                  <button
+                    type="button"
+                    onClick={() => copyToClipboard(paperCitation)}
+                    className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
+                  >
+                    Copy Citation
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => downloadTextFile('tism-related-paper.bib', paperBibtex)}
+                    className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
+                  >
+                    Download BibTeX
+                  </button>
+
+                  <a
+                    href={paperLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-500"
+                  >
+                    Read the paper
+                  </a>
+                </div>
               </div>
 
               <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
                 <div className="text-sm font-semibold text-slate-950">How to cite this tool</div>
                 <p className="mt-3 text-sm leading-7 text-slate-600">
-                  {toolCitation}
+                  If you use this software in academic work, please cite:
                 </p>
+
+                <div className="mt-4 rounded-2xl bg-slate-50 p-4 text-xs leading-6 text-slate-700 ring-1 ring-slate-200">
+                  {toolCitation}
+                </div>
+
+                <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+                  <button
+                    type="button"
+                    onClick={() => copyToClipboard(toolCitation)}
+                    className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
+                  >
+                    Copy Citation
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => downloadTextFile('tism-modeler-software.bib', toolBibtex)}
+                    className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
+                  >
+                    Download BibTeX
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -514,7 +602,15 @@ export default function App() {
               </div>
 
               <div className="mt-1 text-[10px] text-slate-400">
-                Developed by InteX Research Lab, Development Unit
+                Developed by{' '}
+                <a
+                  href="https://www.intexlab.net/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-blue-600 hover:text-blue-500"
+                >
+                  InteX Research Lab
+                </a>
               </div>
             </div>
           </div>
@@ -684,7 +780,15 @@ export default function App() {
                     {authors.join(', ')}
                   </div>
                   <div className="mt-2 text-[11px] text-slate-500">
-                    Developed by InteX Research Lab, Development Unit
+                    Developed by{' '}
+                    <a
+                      href="https://www.intexlab.net/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-blue-400 hover:text-blue-300"
+                    >
+                      InteX Research Lab
+                    </a>
                   </div>
                 </div>
               </div>
