@@ -609,7 +609,7 @@ export default function App() {
                   rel="noopener noreferrer"
                   className="font-medium text-blue-600 hover:text-blue-500"
                 >
-                  InteX Research Lab
+                  InteX Research Lab, Development Unit.
                 </a>
               </div>
             </div>
@@ -787,7 +787,7 @@ export default function App() {
                       rel="noopener noreferrer"
                       className="font-medium text-blue-400 hover:text-blue-300"
                     >
-                      InteX Research Lab
+                      InteX Research Lab, Development Unit.
                     </a>
                   </div>
                 </div>
