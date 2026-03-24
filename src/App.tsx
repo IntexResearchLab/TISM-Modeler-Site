@@ -1,9 +1,20 @@
+import { useMemo } from 'react'
 import './App.css'
 import logo from './assets/logo_light.png'
 
+type PlatformKey = 'mac' | 'windows' | 'linux' | 'unknown'
+
+type DownloadOption = {
+  key: PlatformKey
+  title: string
+  hint: string
+  link: string
+  style: string
+  available: boolean
+}
+
 export default function App() {
   const appName = 'T|ISM Modeler'
-  const releaseVersion = 'v1.1.0'
 
   const authors = [
     'Dr Ibrahim Yahaya Wuni',
@@ -11,24 +22,35 @@ export default function App() {
     'Dr Abdulaziz Alotaibi',
   ]
 
-  const downloadOptions = [
+  const paperLink = 'https://doi.org/10.1080/15623599.2025.2583164'
+
+  const toolCitation =
+    'Wuni, I. Y., Eshun, B., & Alotaibi, A. (2025). T|ISM Modeler [Computer software]. InteX Research Lab, Development Unit.'
+
+  const downloadOptions: DownloadOption[] = [
     {
+      key: 'mac',
       title: 'macOS',
       hint: 'Apple Silicon',
       link: 'https://github.com/IntexResearchLab/TISM-Modeler-Site/releases/download/v1.1.0/Tism-Modeler-0.0.0-arm64.dmg',
       style: 'bg-orange-500 hover:bg-orange-400 text-white',
+      available: true,
     },
     {
+      key: 'windows',
       title: 'Windows',
       hint: 'Windows 10+',
       link: 'https://github.com/IntexResearchLab/TISM-Modeler-Site/releases/download/v1.1.0/Tism-Modeler.0.0.0.msi',
       style: 'bg-blue-600 hover:bg-blue-500 text-white',
+      available: true,
     },
     {
-      title: 'Linux (Coming)',
-      hint: 'AppImage / Debian',
-      link: '#',
-      style: 'bg-white text-slate-950 hover:bg-slate-100',
+      key: 'linux',
+      title: 'Linux',
+      hint: 'AppImage / Debian coming soon',
+      link: '',
+      style: 'bg-white text-slate-950',
+      available: false,
     },
   ]
 
@@ -92,10 +114,10 @@ export default function App() {
     { label: 'Modeling modes', value: 'ISM + TISM' },
     { label: 'Output pipeline', value: 'Variables → Report' },
     { label: 'Export formats', value: 'PNG · CSV · Excel · PDF' },
-    { label: 'Release', value: releaseVersion },
+    { label: 'Research basis', value: 'Publication-driven tool' },
   ]
 
-  const releaseNotes = [
+  const highlights = [
     'Structured desktop workflow for ISM and TISM studies',
     'Support for SSIM, reachability, MICMAC, and level partitioning',
     'Clean visual summaries for academic reporting and demonstration',
@@ -115,6 +137,66 @@ export default function App() {
       a: 'Yes. The product is designed to help users move from structured inputs to visual outputs and exportable artifacts suitable for reports and presentations.',
     },
   ]
+
+  const detectedPlatform = useMemo<PlatformKey>(() => {
+    if (typeof window === 'undefined') return 'unknown'
+
+    const ua = window.navigator.userAgent.toLowerCase()
+    const platform = (window.navigator.platform || '').toLowerCase()
+
+    if (
+      platform.includes('mac') ||
+      ua.includes('mac os') ||
+      ua.includes('macintosh')
+    ) {
+      return 'mac'
+    }
+
+    if (
+      platform.includes('win') ||
+      ua.includes('windows')
+    ) {
+      return 'windows'
+    }
+
+    if (
+      platform.includes('linux') ||
+      ua.includes('linux') ||
+      ua.includes('x11')
+    ) {
+      return 'linux'
+    }
+
+    return 'unknown'
+  }, [])
+
+  const detectedDownload = useMemo(() => {
+    return downloadOptions.find((item) => item.key === detectedPlatform) ?? null
+  }, [detectedPlatform])
+
+  const smartDownloadLabel = useMemo(() => {
+    if (detectedDownload?.available) {
+      return `Download for ${detectedDownload.title}`
+    }
+
+    if (detectedPlatform === 'linux') {
+      return 'Linux version coming soon'
+    }
+
+    return 'Download'
+  }, [detectedDownload, detectedPlatform])
+
+  const handleSmartDownload = () => {
+    if (detectedDownload?.available && detectedDownload.link) {
+      window.location.href = detectedDownload.link
+      return
+    }
+
+    const downloadSection = document.getElementById('download')
+    if (downloadSection) {
+      downloadSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
 
   return (
     <div className="min-h-screen bg-[#f8fafc] text-slate-900 antialiased">
@@ -164,14 +246,16 @@ export default function App() {
               href="#download"
               className="hidden rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50 sm:inline-flex"
             >
-              Release notes
+              Download options
             </a>
-            <a
-              href="#download"
+
+            <button
+              type="button"
+              onClick={handleSmartDownload}
               className="rounded-xl bg-slate-950 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-slate-900/20 transition hover:bg-slate-800"
             >
-              Download {releaseVersion}
-            </a>
+              {smartDownloadLabel}
+            </button>
           </div>
         </div>
       </header>
@@ -181,7 +265,7 @@ export default function App() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600 shadow-sm">
               <span className="h-2 w-2 rounded-full bg-emerald-500" />
-              Desktop release now available · Version 1.1.0
+              Desktop research tool for interpretive structural modeling
             </div>
 
             <div className="mt-6 flex items-center gap-4">
@@ -216,18 +300,57 @@ export default function App() {
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#download"
+              <button
+                type="button"
+                onClick={handleSmartDownload}
                 className="rounded-2xl bg-slate-950 px-6 py-3 text-center text-sm font-semibold text-white shadow-xl shadow-slate-900/20 transition hover:bg-slate-800"
               >
-                Download for desktop
-              </a>
+                {smartDownloadLabel}
+              </button>
+
               <a
                 href="#overview"
                 className="rounded-2xl border border-slate-300 bg-white px-6 py-3 text-center text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
               >
                 Explore the workflow
               </a>
+            </div>
+
+            {detectedDownload?.available && (
+              <div className="mt-4 text-sm text-slate-500">
+                Detected platform: <span className="font-semibold text-slate-700">{detectedDownload.title}</span>
+              </div>
+            )}
+
+            {detectedPlatform === 'linux' && (
+              <div className="mt-4 text-sm text-slate-500">
+                Linux detected. A Linux build is not available yet, but you can still view the download options below.
+              </div>
+            )}
+
+            <div className="mt-8 grid gap-4">
+              <div className="rounded-3xl border border-blue-100 bg-white p-6 shadow-sm ring-1 ring-blue-100">
+                <div className="text-sm font-semibold text-blue-600">Related publication</div>
+                <p className="mt-3 text-sm leading-7 text-slate-600">
+                  A state-of-the-art review of the application of interpretive structural
+                  modelling in construction management studies.
+                </p>
+                <a
+                  href={paperLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex text-sm font-semibold text-blue-600 transition hover:text-blue-500"
+                >
+                  Read the paper →
+                </a>
+              </div>
+
+              <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+                <div className="text-sm font-semibold text-slate-950">How to cite this tool</div>
+                <p className="mt-3 text-sm leading-7 text-slate-600">
+                  {toolCitation}
+                </p>
+              </div>
             </div>
 
             <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -269,7 +392,7 @@ export default function App() {
                     </div>
                   </div>
                   <div className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-1.5 text-xs font-medium text-slate-200">
-                    {releaseVersion}
+                    Desktop app
                   </div>
                 </div>
 
@@ -498,42 +621,54 @@ export default function App() {
               <div>
                 <div className="text-sm font-semibold text-orange-400">Download</div>
                 <h2 className="mt-2 text-3xl font-bold tracking-tight">
-                  Get {appName} {releaseVersion} for your desktop.
+                  Get {appName} for your desktop.
                 </h2>
                 <p className="mt-4 max-w-2xl text-slate-300">
                   Choose the appropriate installer for your operating system.
                 </p>
 
                 <div className="mt-6 grid gap-4 sm:grid-cols-3">
-                  {downloadOptions.map((item) => (
-                    <a
-                      key={item.title}
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`rounded-2xl px-5 py-4 text-center shadow-lg transition ${item.style}`}
-                    >
-                      <div className="text-sm font-semibold">Download for {item.title}</div>
-                      <div
-                        className={`mt-1 text-xs ${
-                          item.title.startsWith('Linux') ? 'text-slate-500' : 'text-white/75'
+                  {downloadOptions.map((item) => {
+                    if (!item.available) {
+                      return (
+                        <div
+                          key={item.title}
+                          className="cursor-not-allowed rounded-2xl border border-slate-700 bg-slate-800/70 px-5 py-4 text-center opacity-70"
+                        >
+                          <div className="text-sm font-semibold text-slate-200">
+                            {item.title}
+                          </div>
+                          <div className="mt-1 text-xs text-slate-400">{item.hint}</div>
+                        </div>
+                      )
+                    }
+
+                    const isDetected = detectedPlatform === item.key
+
+                    return (
+                      <a
+                        key={item.title}
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`rounded-2xl px-5 py-4 text-center shadow-lg transition ${item.style} ${
+                          isDetected ? 'ring-2 ring-white/80 ring-offset-2 ring-offset-slate-950' : ''
                         }`}
                       >
-                        {item.hint}
-                      </div>
-                    </a>
-                  ))}
+                        <div className="text-sm font-semibold">
+                          {isDetected ? `Recommended: ${item.title}` : `Download for ${item.title}`}
+                        </div>
+                        <div className="mt-1 text-xs text-white/75">{item.hint}</div>
+                      </a>
+                    )
+                  })}
                 </div>
               </div>
 
               <div className="rounded-[28px] border border-slate-800 bg-[#111827] p-6">
-                <div className="text-sm font-semibold text-white">Release notes</div>
-                <div className="mt-1 text-sm text-slate-400">
-                  {appName} {releaseVersion}
-                </div>
-
+                <div className="text-sm font-semibold text-white">Highlights</div>
                 <div className="mt-5 space-y-3">
-                  {releaseNotes.map((item) => (
+                  {highlights.map((item) => (
                     <div
                       key={item}
                       className="rounded-xl bg-slate-900 px-4 py-3 text-sm text-slate-300 ring-1 ring-slate-800"
@@ -541,10 +676,6 @@ export default function App() {
                       {item}
                     </div>
                   ))}
-                </div>
-
-                <div className="mt-4 rounded-2xl border border-slate-800 bg-slate-950 p-4 text-sm text-slate-300">
-                  Copyright © {new Date().getFullYear()} {authors.join(', ')}
                 </div>
 
                 <div className="mt-6 rounded-2xl border border-slate-800 bg-slate-950 p-4">
