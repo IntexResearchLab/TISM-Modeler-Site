@@ -40,10 +40,10 @@ export default function App() {
   url = {https://doi.org/10.1080/15623599.2025.2583164}
 }`
 
-  const toolBibtex = `@software{tism_modeler_2025,
+  const toolBibtex = `@software{tism_modeler_2026,
   author = {Wuni, Ibrahim Yahaya and Eshun, Bridget and Alotaibi, Abdulaziz},
-  title = {T|ISM Modeler},
-  year = {2025},
+  title = {T/ISM Modeler},
+  year = {2026},
   type = {Computer software}
 }`
 
@@ -90,10 +90,10 @@ export default function App() {
     {
       key: 'linux',
       title: 'Linux',
-      hint: 'AppImage / Debian coming soon',
-      link: '',
-      style: 'bg-white text-slate-950',
-      available: false,
+      hint: 'Debian package (.deb)',
+      link: 'https://github.com/IntexResearchLab/TISM-Modeler-Site/releases/download/v4.0.0/tism-modeler_0.0.0_amd64.deb',
+      style: 'bg-white hover:bg-slate-100 text-slate-950',
+      available: true,
     },
   ]
 
@@ -195,10 +195,7 @@ export default function App() {
       return 'mac'
     }
 
-    if (
-      platform.includes('win') ||
-      ua.includes('windows')
-    ) {
+    if (platform.includes('win') || ua.includes('windows')) {
       return 'windows'
     }
 
@@ -221,13 +218,8 @@ export default function App() {
     if (detectedDownload?.available) {
       return `Download for ${detectedDownload.title}`
     }
-
-    if (detectedPlatform === 'linux') {
-      return 'Linux version coming soon'
-    }
-
     return 'Download'
-  }, [detectedDownload, detectedPlatform])
+  }, [detectedDownload])
 
   const handleSmartDownload = () => {
     if (detectedDownload?.available && detectedDownload.link) {
@@ -361,13 +353,10 @@ export default function App() {
 
             {detectedDownload?.available && (
               <div className="mt-4 text-sm text-slate-500">
-                Detected platform: <span className="font-semibold text-slate-700">{detectedDownload.title}</span>
-              </div>
-            )}
-
-            {detectedPlatform === 'linux' && (
-              <div className="mt-4 text-sm text-slate-500">
-                Linux detected. A Linux build is not available yet, but you can still view the download options below.
+                Detected platform:{' '}
+                <span className="font-semibold text-slate-700">
+                  {detectedDownload.title}
+                </span>
               </div>
             )}
 
@@ -740,6 +729,8 @@ export default function App() {
                     }
 
                     const isDetected = detectedPlatform === item.key
+                    const hintClass =
+                      item.key === 'linux' ? 'text-slate-600' : 'text-white/75'
 
                     return (
                       <a
@@ -748,13 +739,17 @@ export default function App() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`rounded-2xl px-5 py-4 text-center shadow-lg transition ${item.style} ${
-                          isDetected ? 'ring-2 ring-white/80 ring-offset-2 ring-offset-slate-950' : ''
+                          isDetected
+                            ? 'ring-2 ring-white/80 ring-offset-2 ring-offset-slate-950'
+                            : ''
                         }`}
                       >
                         <div className="text-sm font-semibold">
-                          {isDetected ? `Recommended: ${item.title}` : `Download for ${item.title}`}
+                          {isDetected
+                            ? `Recommended: ${item.title}`
+                            : `Download for ${item.title}`}
                         </div>
-                        <div className="mt-1 text-xs text-white/75">{item.hint}</div>
+                        <div className={`mt-1 text-xs ${hintClass}`}>{item.hint}</div>
                       </a>
                     )
                   })}
