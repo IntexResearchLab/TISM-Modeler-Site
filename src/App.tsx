@@ -75,7 +75,7 @@ export default function App() {
       key: 'mac',
       title: 'macOS',
       hint: 'Apple Silicon',
-      link: 'https://github.com/IntexResearchLab/TISM-Modeler-Site/releases/download/v.2.0/TISM-Modeler-0.0.0-arm64.dmg',
+      link: 'https://github.com/IntexResearchLab/TISM-Modeler-Site/releases/download/v5.0.0/TISM-Modeler-0.0.0-arm64.dmg',
       style: 'bg-orange-500 hover:bg-orange-400 text-white',
       available: true,
     },
@@ -83,7 +83,7 @@ export default function App() {
       key: 'windows',
       title: 'Windows',
       hint: 'Windows 10+',
-      link: 'https://github.com/IntexResearchLab/TISM-Modeler-Site/releases/download/v.2.0/TISM-Modeler.0.0.0.msi',
+      link: 'https://github.com/IntexResearchLab/TISM-Modeler-Site/releases/download/v5.0.0/TISM-Modeler.0.0.0.msi',
       style: 'bg-blue-600 hover:bg-blue-500 text-white',
       available: true,
     },
@@ -190,9 +190,9 @@ export default function App() {
   ]
 
   const footerInfo = [
-    { label: 'Authors', value: authors.join(', ') },
+    { label: 'Authors', value: authors },
     { label: 'Research focus', value: 'Interpretive structural modeling (ISM/TISM)' },
-    { label: 'Distribution', value: 'Desktop installers for macOS, Windows, and Linux' },
+    // { label: 'Distribution', value: 'Desktop installers for macOS, Windows, and Linux' },
   ]
 
   const footerResources = [
@@ -952,7 +952,13 @@ export default function App() {
                       {item.label}
                     </div>
                     <div className="mt-1 text-sm leading-6 text-slate-300">
-                      {item.label === 'Contact' ? (
+                      {item.label === 'Authors' && Array.isArray(item.value) ? (
+                        <div className="space-y-1">
+                          {item.value.map((author) => (
+                            <div key={author}>{author}</div>
+                          ))}
+                        </div>
+                      ) : item.label === 'Contact' ? (
                         <a
                           href={`mailto:${item.value}`}
                           className="transition hover:text-white"
