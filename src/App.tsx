@@ -181,6 +181,26 @@ export default function App() {
     },
   ]
 
+  const footerLinks = [
+    { label: 'Overview', href: '#overview' },
+    { label: 'Workflow', href: '#workflow' },
+    { label: 'Features', href: '#features' },
+    { label: 'Download', href: '#download' },
+    { label: 'FAQ', href: '#faq' },
+  ]
+
+  const footerInfo = [
+    { label: 'Authors', value: authors.join(', ') },
+    { label: 'Research focus', value: 'Interpretive structural modeling (ISM/TISM)' },
+    { label: 'Distribution', value: 'Desktop installers for macOS, Windows, and Linux' },
+  ]
+
+  const footerResources = [
+    { label: 'Related publication', href: paperLink },
+    { label: 'Software citation', href: '#top' },
+    { label: 'Download installers', href: '#download' },
+  ]
+
   const detectedPlatform = useMemo<PlatformKey>(() => {
     if (typeof window === 'undefined') return 'unknown'
 
@@ -809,6 +829,163 @@ export default function App() {
           </div>
         </section>
       </main>
+
+      <footer className="relative overflow-hidden border-t border-slate-200 bg-slate-950 text-slate-200">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-[-5rem] top-[-4rem] h-56 w-56 rounded-full bg-orange-500/12 blur-3xl" />
+          <div className="absolute right-[-4rem] bottom-[-5rem] h-64 w-64 rounded-full bg-blue-500/12 blur-3xl" />
+        </div>
+
+        <div className="relative mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-16">
+          <div className="rounded-[32px] border border-white/10 bg-white/5 p-7 shadow-2xl shadow-slate-950/30 backdrop-blur-sm lg:p-10">
+            <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-300">
+                  Professional research platform
+                </div>
+                <h2 className="mt-4 max-w-2xl text-3xl font-black tracking-[-0.03em] text-white sm:text-4xl">
+                  Continue your ISM and TISM workflow with a cleaner, faster desktop experience.
+                </h2>
+                <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-300">
+                  {appName} brings methodology, interpretation, and export-ready outputs
+                  together in one focused environment for researchers, students, and
+                  academic teams.
+                </p>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                <button
+                  type="button"
+                  onClick={handleSmartDownload}
+                  className="rounded-2xl bg-white px-5 py-4 text-sm font-semibold text-slate-950 shadow-lg transition hover:bg-slate-100"
+                >
+                  {smartDownloadLabel}
+                </button>
+                <a
+                  href="mailto:ibrahim.wuni@kfupm.edu.sa"
+                  className="rounded-2xl border border-white/15 bg-white/5 px-5 py-4 text-center text-sm font-semibold text-white transition hover:border-white/25 hover:bg-white/10"
+                >
+                  Contact researcher
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-10 grid gap-10 lg:grid-cols-[1.15fr_0.7fr_0.8fr_0.9fr]">
+            <div>
+              <div className="flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-white/10">
+                  <img
+                    src={logo}
+                    alt={`${appName} logo`}
+                    className="h-10 w-10 object-contain"
+                  />
+                </div>
+                <div>
+                  <div className="text-sm font-semibold tracking-tight text-white">
+                    {appName}
+                  </div>
+                  <div className="text-xs text-slate-400">
+                    Research software for interpretive structural modeling
+                  </div>
+                </div>
+              </div>
+
+              <p className="mt-5 max-w-md text-sm leading-7 text-slate-400">
+                Built for structured modeling workflows spanning variable definition,
+                SSIM, reachability analysis, level partitioning, MICMAC analysis, and
+                final model visualization.
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                {metrics.slice(0, 3).map((item) => (
+                  <div
+                    key={item.label}
+                    className="rounded-full border border-slate-800 bg-slate-900 px-3 py-1.5 text-[11px] font-medium text-slate-300"
+                  >
+                    {item.value}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div className="text-sm font-semibold text-white">Navigation</div>
+              <div className="mt-5 space-y-3">
+                {footerLinks.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className="block text-sm text-slate-400 transition hover:text-white"
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div className="text-sm font-semibold text-white">Resources</div>
+              <div className="mt-5 space-y-3">
+                {footerResources.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target={item.href.startsWith('http') ? '_blank' : undefined}
+                    rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="block text-sm text-slate-400 transition hover:text-white"
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div className="text-sm font-semibold text-white">Basic info</div>
+              <div className="mt-5 space-y-4">
+                {footerInfo.map((item) => (
+                  <div key={item.label}>
+                    <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                      {item.label}
+                    </div>
+                    <div className="mt-1 text-sm leading-6 text-slate-300">
+                      {item.label === 'Contact' ? (
+                        <a
+                          href={`mailto:${item.value}`}
+                          className="transition hover:text-white"
+                        >
+                          {item.value}
+                        </a>
+                      ) : (
+                        item.value
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="relative border-t border-slate-800">
+          <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-5 text-sm text-slate-500 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+            <div>© {new Date().getFullYear()} {appName}. All rights reserved.</div>
+            <div className="text-[11px] text-slate-600">
+              Developed by{' '}
+              <a
+                href="https://www.intexlab.net/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-slate-500 transition hover:text-slate-300"
+              >
+                InteX Research Lab, Development Unit
+              </a>
+              .
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
