@@ -380,76 +380,6 @@ export default function App() {
               </div>
             )}
 
-            <div className="mt-8 grid gap-4">
-              <div className="rounded-3xl border border-blue-100 bg-white p-6 shadow-sm ring-1 ring-blue-100">
-                <div className="text-sm font-semibold text-blue-600">Related publication</div>
-                <p className="mt-3 text-sm leading-7 text-slate-600">
-                  A state-of-the-art review of the application of interpretive structural
-                  modelling in construction management studies.
-                </p>
-
-                <div className="mt-4 rounded-2xl bg-slate-50 p-4 text-xs leading-6 text-slate-700 ring-1 ring-slate-200">
-                  {paperCitation}
-                </div>
-
-                <div className="mt-4 flex flex-col gap-3 sm:flex-row">
-                  <button
-                    type="button"
-                    onClick={() => copyToClipboard(paperCitation)}
-                    className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
-                  >
-                    Copy Citation
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => downloadTextFile('tism-related-paper.bib', paperBibtex)}
-                    className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
-                  >
-                    Download BibTeX
-                  </button>
-
-                  <a
-                    href={paperLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-500"
-                  >
-                    Read the paper
-                  </a>
-                </div>
-              </div>
-
-              <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-                <div className="text-sm font-semibold text-slate-950">How to cite this tool</div>
-                <p className="mt-3 text-sm leading-7 text-slate-600">
-                  If you use this software in academic work, please cite:
-                </p>
-
-                <div className="mt-4 rounded-2xl bg-slate-50 p-4 text-xs leading-6 text-slate-700 ring-1 ring-slate-200">
-                  {toolCitation}
-                </div>
-
-                <div className="mt-4 flex flex-col gap-3 sm:flex-row">
-                  <button
-                    type="button"
-                    onClick={() => copyToClipboard(toolCitation)}
-                    className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
-                  >
-                    Copy Citation
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => downloadTextFile('tism-modeler-software.bib', toolBibtex)}
-                    className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
-                  >
-                    Download BibTeX
-                  </button>
-                </div>
-              </div>
-            </div>
-
             <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
               {metrics.map((item) => (
                 <div
@@ -620,6 +550,78 @@ export default function App() {
                 >
                   InteX Research Lab, Development Unit.
                 </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-6 py-8 lg:px-8 lg:py-10">
+          <div className="grid gap-4 lg:grid-cols-2 lg:items-stretch">
+            <div className="flex h-full flex-col rounded-3xl border border-blue-100 bg-white p-6 shadow-sm ring-1 ring-blue-100 lg:p-7">
+              <div className="text-sm font-semibold text-blue-600">Related publication</div>
+              <p className="mt-3 text-sm leading-7 text-slate-600">
+                A state-of-the-art review of the application of interpretive structural
+                modelling in construction management studies.
+              </p>
+
+              <div className="mt-4 rounded-2xl bg-slate-50 p-4 text-xs leading-6 text-slate-700 ring-1 ring-slate-200">
+                {paperCitation}
+              </div>
+
+              <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <button
+                  type="button"
+                  onClick={() => copyToClipboard(paperCitation)}
+                  className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
+                >
+                  Copy Citation
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => downloadTextFile('tism-related-paper.bib', paperBibtex)}
+                  className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
+                >
+                  Download BibTeX
+                </button>
+
+                <a
+                  href={paperLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-500"
+                >
+                  Read the paper
+                </a>
+              </div>
+            </div>
+
+            <div className="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm lg:p-7">
+              <div className="text-sm font-semibold text-slate-950">How to cite this tool</div>
+              <p className="mt-3 text-sm leading-7 text-slate-600">
+                If you use this software in academic work, please cite:
+              </p>
+
+              <div className="mt-4 rounded-2xl bg-slate-50 p-4 text-xs leading-6 text-slate-700 ring-1 ring-slate-200">
+                {toolCitation}
+              </div>
+
+              <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <button
+                  type="button"
+                  onClick={() => copyToClipboard(toolCitation)}
+                  className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
+                >
+                  Copy Citation
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => downloadTextFile('tism-modeler-software.bib', toolBibtex)}
+                  className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
+                >
+                  Download BibTeX
+                </button>
               </div>
             </div>
           </div>
