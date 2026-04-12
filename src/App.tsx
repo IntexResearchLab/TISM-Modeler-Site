@@ -90,8 +90,8 @@ export default function App() {
     {
       key: 'linux',
       title: 'Linux',
-      hint: 'Debian package (.deb)',
-      link: 'https://github.com/IntexResearchLab/TISM-Modeler-Site/releases/download/v4.0.0/tism-modeler_0.0.0_amd64.deb',
+      hint: 'AppImage (Universal Linux)',
+      link: 'https://github.com/IntexResearchLab/TISM-Modeler-Site/releases/download/v6.0.0/TISM-Modeler-0.0.0.1.AppImage',
       style: 'bg-white hover:bg-slate-100 text-slate-950',
       available: true,
     },
